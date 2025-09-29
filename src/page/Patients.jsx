@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import searchIcon from "../../image/searchIcon.png";
 import Layer1 from "../../image/Layer1.png";
 import horizontal3dot from "../../image/horizontal3dot.png";
+import { PatientContext } from "../context/PatientContext";
 function Patients() {
+  const { patient } = useContext(PatientContext);
   return (
     <div className="main-headers">
       <div className="patients-header">
