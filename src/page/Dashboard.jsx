@@ -1,4 +1,4 @@
-import axios from "axios";
+import { PatientContext } from "../context/PatientContext";
 import DiagramHistory from "./DiagramHistory";
 import DiagramList from "./DiagramList";
 import LabResult from "./LabResult";
@@ -6,29 +6,46 @@ import Navbar from "./Navbar";
 import Patients from "./Patients";
 import PersonalDetails from "./PersonalDetails";
 import { useEffect, useState } from "react";
-import { PatientContext } from "../context/PatientContext";
-
+import axios from "axios";
 function Dashboard() {
-  const [patient, setPatient] = useState("");
+  const [patient, setPatient] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectPatient, setSelectPatient] = useState(null);
 
+  // Login API
+  const username = "coalition";
+  const password = "skills-test";
+  // Encode in Base64
+  const base64 = btoa(`${username}:${password}`);
   async function fetchPatientAPI() {
     const { data } = await axios.get(
-      "https://fedskillstest.coalitiontechnologies.workers.dev/"
+      "https://fedskillstest.coalitiontechnologies.workers.dev/",
+      {
+        headers: {
+          Authorization: `Basic ${base64}`,
+        },
+      }
     );
     setPatient(data);
-    console.log(data);
   }
   useEffect(() => {
+    setIsLoading(false);
     fetchPatientAPI();
-  });
-
+  }, []);
   return (
-    <PatientContext.Provider value={{ patient, setPatient }}>
-      <div>
+    <div>
+      <PatientContext.Provider
+        value={{
+          patient,
+          isLoading,
+          selectPatient,
+          setSelectPatient,
+        }}
+      >
         <Navbar />
 
         <div className="body-page">
-          <div className="card patients-name">
+          <div className="patients-name">
             <Patients />
           </div>
 
@@ -45,15 +62,15 @@ function Dashboard() {
             <div className="card">
               <PersonalDetails />
             </div>
-            <div className="card lab-results">
+            <div className="lab-results">
               <LabResult />
             </div>
           </div>
         </div>
 
         <div className="footer-page"></div>
-      </div>
-    </PatientContext.Provider>
+      </PatientContext.Provider>
+    </div>
   );
 }
 

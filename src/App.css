@@ -127,6 +127,7 @@ div > .vertical-bar {
   grid-template-columns: 300px 1fr 350px;
   gap: 20px;
   margin: 20px;
+  height: 1054px;
 }
 
 .card {
@@ -138,32 +139,63 @@ div > .vertical-bar {
 }
 /* This is where I style patients page  */
 .patients-name {
-  height: 900px;
+  height: 1054px;
+}
+.patient-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
 }
 
 .patients-header {
   display: flex;
   justify-content: space-between;
+  padding: 5px 0px;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
 }
+
 .search-icon {
   width: 18px;
   height: 18px;
 }
+.patients-title {
+  width: 100px;
+  height: 50px;
+}
 .patient-lists {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 .patients-info-list {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  gap: 10px;
+  justify-content: space-evenly;
+  padding: 5px 0px;
+  gap: 5px;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
 }
 .patient-name-details {
   flex: 1;
 }
+.main-headers {
+  width: 100%;
+  height: 1054px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 16px;
+  opacity: 1;
+  padding: 20px 20px;
+}
+.patients-title {
+  font-size: 25px;
+}
+
 .horizontal-threedot-icon {
   margin-left: auto;
   cursor: pointer;
@@ -266,9 +298,22 @@ select {
   flex-direction: column;
   gap: 20px;
 }
-.card > .personal-record {
-  flex: 2;
+.personal-details {
+  width: 100%;
+  height: 100%;
+  padding: 20px 0px;
 }
+.lab-results {
+  width: 367px;
+  height: 296px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 15px 16px;
+}
+.card {
+  height: 900px;
+}
+
 /* This is below chart diagram */
 .inside-body-part {
   display: flex;
@@ -312,15 +357,25 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
+}
+.personal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  height: 100%;
+}
+.profile-age {
+  font-weight: 700;
+  font-size: 20px;
 }
 .dob-detail {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .gender-detail {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .gender-icon {
   padding: 10px 0px;
@@ -345,7 +400,7 @@ select {
 
 .contact-info-detail {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .patients-contactInfo {
   display: flex;
@@ -359,7 +414,7 @@ select {
 .emergency-info-detail {
   padding: 10px 0px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .patients-emergencyInfo {
   display: flex;
@@ -371,7 +426,7 @@ select {
 }
 .insurance-info-detail {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .patients-insurance {
   display: flex;
@@ -412,7 +467,7 @@ select {
 
 .patients-name::-webkit-scrollbar {
   width: 6px;
-  height: 800px;
+  height: 100%;
 }
 .patients-name::-webkit-scrollbar-thumb {
   background: #ccc;
@@ -463,10 +518,176 @@ tr:last-child td {
 .result-description {
   display: flex;
   justify-content: space-between;
-  max-width: 100%;
+  width: 315px;
+  height: 40px;
 }
 .downloadIcon {
-  padding: 0px 15px;
+  width: 20px;
+  height: 20px;
+}
+.lab-title {
+  padding: 15px 0px;
+  font-size: 30px;
+}
+/* At this bottom where I style loading skeleton */
+
+/* Style navbar skeleton */
+.logo-skeleton {
+  width: 211px;
+  height: 48px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.overview-btn-skeleton,
+.paitents-btn-skeleton,
+.schedule-btn-skeleton,
+.message-btn-skeleton,
+.credit-card-skeleton {
+  width: 88px;
+  height: 19px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.doctor-account-skeleton {
+  width: 241px;
+  height: 44px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+/* Style patient page skeleton */
+.skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.patients-title-skeleton {
+  width: 100px;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+
+.patients-info-list-skeleton {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5px 0px;
+  gap: 5px;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.patients-info-skeleton {
+  width: 54px;
+  height: 19px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+/* Diagram History Skeleton */
+.diagram-graph-skeleton {
+  width: 726px;
+  height: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+  border-radius: 16px;
+}
+.inside-body-part-skeleton {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.lungs-skeleton {
+  width: 228px;
+  height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.temperature-skeleton {
+  width: 228px;
+  height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.heart-skeleton {
+  width: 228px;
+  height: 200px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.main-image-profile-skeleton {
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.profile-name-skeleton {
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.profile-age-skeleton {
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+}
+.birth-icon-skeleton,
+.gender-icon-skeleton,
+.phone-icon-skeleton,
+.emergencyPhone-icon-skeleton,
+.insurance-icon-skeleton {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+  border-radius: 41px;
+}
+.title-dateOfBirth-skeleton,
+.title-gender-skeleton,
+.title-contactInfo-skeleton,
+.title-emergencyInfo-skeleton,
+.title-insurance-skeleton {
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
+  border-radius: 41px;
+}
+.showAll-btn-skeleton {
+  width: 220px;
+  height: 41px;
+  border-radius: 41px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition-duration: 1.5s;
+  transition-delay: 1.5s;
 }
 
 @media (max-width: 1024px) {

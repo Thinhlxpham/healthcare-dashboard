@@ -8,8 +8,16 @@ import SeniorDoctor from "../../image/SeniorDoctor.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import vertical3dot from "../../image/vertical3dot.png";
+import { useContext } from "react";
+import { PatientContext } from "../context/PatientContext";
+import NavBarSkeleton from "../LoadingSkeleton/NavBarSkeleton";
 
 function Navbar() {
+  const { isLoading } = useContext(PatientContext);
+
+  if (isLoading) {
+    return <NavBarSkeleton />;
+  }
   return (
     <div className="navbar-menu">
       <div className="menu-details">
