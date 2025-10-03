@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 function Dashboard() {
   const [patient, setPatient] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+
   const [selectPatient, setSelectPatient] = useState(null);
 
   // Login API
@@ -29,7 +29,6 @@ function Dashboard() {
     setPatient(data);
   }
   useEffect(() => {
-    setIsLoading(false);
     fetchPatientAPI();
   }, []);
   return (
@@ -37,7 +36,7 @@ function Dashboard() {
       <PatientContext.Provider
         value={{
           patient,
-          isLoading,
+
           selectPatient,
           setSelectPatient,
         }}

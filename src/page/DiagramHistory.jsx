@@ -3,7 +3,9 @@ import temperature from "../../image/temperature.png";
 import heart from "../../image/heart.png";
 import { useContext } from "react";
 import { PatientContext } from "../context/PatientContext";
-import DiagramHistorySkeleton from "../LoadingSkeleton/DiagramHistorySkeleton";
+
+import { Chart as ChartJS } from "chart.js/auto";
+import { Line } from "react-chartjs-2";
 
 function DiagramHistory() {
   const { selectPatient, isLoading } = useContext(PatientContext);
@@ -13,6 +15,23 @@ function DiagramHistory() {
   const respiratoryRate = latestDiagnosis.respiratory_rate || {};
   const heartRate = latestDiagnosis.heart_rate || {};
   const temp = latestDiagnosis.temperature || {};
+
+  // Diagnostic history last 6 month report
+  const history = selectPatient?.diagnosis_history?.slice(0, 6).reverse() || [];
+  // Defind variable chart bar API
+  const chartLabel = history.map((data) => {
+    return `${data.month}, ${data.year}`;
+  });
+  // Map through systolic and diastolic data chart
+  const systolicData = history.map(
+    (data) => data.blood_pressure?.systolic?.value || 0
+  );
+  const diastolicData = history.map(
+    (data) => data.blood_pressure?.diastolic?.value || 0
+  );
+  // Defind syslotic and diagnotic
+  const systolic = latestDiagnosis.blood_pressure?.systolic || {};
+  const diastolic = latestDiagnosis.blood_pressure?.diastolic || {};
 
   if (isLoading) {
     return <DiagramHistorySkeleton />;
@@ -31,36 +50,44 @@ function DiagramHistory() {
             </select>
           </div>
           <div className="board-chart">
-            <svg viewBox="0 0 600 250" className="healthcare-chart">
-              <line
-                x1="20"
-                y1="220"
-                x2="400"
-                y2="220"
-                stroke="#ddd"
-                strokeWidth="1"
-              />
-              <path
-                d="M40,140 C150,100 250,60 360,120 C470,200 580,140 580,100"
-                stroke="#C26EB4"
-                strokeWidth="3"
-                fill="none"
-              />
-              <circle cx="40" cy="140" r="5" fill="#e78de5" />
-              <circle cx="200" cy="90" r="5" fill="#e78de5" />
-              <circle cx="400" cy="140" r="5" fill="#e78de5" />
-              <circle cx="580" cy="100" r="5" fill="#e78de5" />
-              <path
-                d="M40,180 C150,240 250,150 360,200 C470,240 580,220 580,210"
-                stroke="#7d6bf5"
-                strokeWidth="3"
-                fill="none"
-              />
-              <circle cx="40" cy="180" r="5" fill="#7d6bf5" />
-              <circle cx="200" cy="201" r="5" fill="#7d6bf5" />
-              <circle cx="360" cy="200" r="5" fill="#7d6bf5" />
-              <circle cx="580" cy="210" r="5" fill="#7d6bf5" />
-            </svg>
+            <Line
+              data={{
+                labels: [
+                  "Oct, 2023",
+                  "Nov, 2023",
+                  "Dec, 2023",
+                  "Jan, 2024",
+                  "Feb, 2024",
+                  "Mar, 2024",
+                ],
+                datasets: [
+                  {
+                    label: "Systolic",
+                    data: [60, 100, 80, 120, 180, 110],
+                    borderColor: "#C26EB4",
+                    tension: 0.4,
+                  },
+                  {
+                    label: "Diastolic",
+                    data: [70, 90, 140, 160, 155, 130],
+                    borderColor: "#7E6CAB",
+                    tension: 0.4,
+                  },
+                ],
+              }}
+              options={{
+                responsive: true,
+                animation: {
+                  duration: 400,
+                  easing: "easeOutQuad",
+                },
+                plugins: {
+                  legend: {
+                    position: "top",
+                  },
+                },
+              }}
+            />
             <div className="health-record">
               <div className="health-summary">
                 <div className="summary systolic">
@@ -118,51 +145,62 @@ function DiagramHistory() {
           </select>
         </div>
         <div className="board-chart">
-          <svg viewBox="0 0 600 250" className="healthcare-chart">
-            <line
-              x1="20"
-              y1="220"
-              x2="400"
-              y2="220"
-              stroke="#ddd"
-              strokeWidth="1"
-            />
-            <path
-              d="M40,140 C150,100 250,60 360,120 C470,200 580,140 580,100"
-              stroke="#C26EB4"
-              strokeWidth="3"
-              fill="none"
-            />
-            <circle cx="40" cy="140" r="5" fill="#e78de5" />
-            <circle cx="200" cy="90" r="5" fill="#e78de5" />
-            <circle cx="400" cy="140" r="5" fill="#e78de5" />
-            <circle cx="580" cy="100" r="5" fill="#e78de5" />
-            <path
-              d="M40,180 C150,240 250,150 360,200 C470,240 580,220 580,210"
-              stroke="#7d6bf5"
-              strokeWidth="3"
-              fill="none"
-            />
-            <circle cx="40" cy="180" r="5" fill="#7d6bf5" />
-            <circle cx="200" cy="201" r="5" fill="#7d6bf5" />
-            <circle cx="360" cy="200" r="5" fill="#7d6bf5" />
-            <circle cx="580" cy="210" r="5" fill="#7d6bf5" />
-          </svg>
+          <Line
+            data={{
+              labels: chartLabel,
+              datasets: [
+                {
+                  label: "Systolic",
+                  data: systolicData,
+                  borderColor: "#C26EB4",
+                  tension: 0.4,
+                },
+                {
+                  label: "Diastolic",
+                  data: diastolicData,
+                  borderColor: "#7E6CAB",
+                  tension: 0.4,
+                },
+              ],
+            }}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: "top",
+                },
+              },
+            }}
+          />
           <div className="health-record">
             <div className="health-summary">
               <div className="summary systolic">
                 <div className="dot pink"></div>
               </div>
               <p>Systolic</p>
-              <h2>160</h2>
-              <small>▲ Higher than Average</small>
+              <h2>{systolic.value}</h2>
+              <small>
+                {systolic.levels === "Higher than average"
+                  ? "▲"
+                  : systolic.levels === "Lower than average"
+                  ? "▼"
+                  : ""}{" "}
+                {systolic.levels}
+              </small>
             </div>
             <div className="summary-diastolic">
               <span className="dot purple"></span>
               <div>
                 <p>Diastolic</p>
-                <h2>78</h2>
-                <small>▼ Lower than Average</small>
+                <h2>{diastolic.value}</h2>
+                <small>
+                  {diastolic.levels === "Higher than average"
+                    ? "▲"
+                    : diastolic.levels === "Lower than average"
+                    ? "▼"
+                    : ""}{" "}
+                  {diastolic.levels}
+                </small>
               </div>
             </div>
           </div>

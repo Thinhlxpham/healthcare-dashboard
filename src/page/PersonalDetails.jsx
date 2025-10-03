@@ -6,14 +6,9 @@ import InsuranceIcon from "../../image/InsuranceIcon.png";
 import { useContext } from "react";
 import { PatientContext } from "../context/PatientContext";
 import { format } from "date-fns";
-import PersonalDetailSkeleton from "../LoadingSkeleton/PersonalDetailSkeleton";
 
 function PersonalDetails() {
-  const { selectPatient, isLoading } = useContext(PatientContext);
-
-  if (isLoading) {
-    return <PersonalDetailSkeleton />;
-  }
+  const { selectPatient } = useContext(PatientContext);
 
   // This is default page of personal details
   if (!selectPatient) {

@@ -3,7 +3,7 @@ import searchIcon from "../../image/searchIcon.png";
 
 import horizontal3dot from "../../image/horizontal3dot.png";
 import { PatientContext } from "../context/PatientContext";
-import PatientSkeleton from "../LoadingSkeleton/PatientSkeleton";
+
 function Patients() {
   const { patient, setSelectPatient } = useContext(PatientContext);
 
@@ -32,7 +32,7 @@ function Patients() {
             </div>
           ))
         ) : (
-          <PatientSkeleton />
+          <h1>Loading...</h1>
         )}
       </div>
     </div>
