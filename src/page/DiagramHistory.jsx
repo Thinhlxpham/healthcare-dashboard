@@ -1,14 +1,14 @@
 import lungs from "../../image/lungs.png";
 import temperature from "../../image/temperature.png";
 import heart from "../../image/heart.png";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { PatientContext } from "../context/PatientContext";
 
 import { Chart as ChartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 
 function DiagramHistory() {
-  const { selectPatient, isLoading } = useContext(PatientContext);
+  const { selectPatient } = useContext(PatientContext);
 
   // Define diagnosis_history which make easier to fetch API
   const latestDiagnosis = selectPatient?.diagnosis_history?.[0] || {};
@@ -33,9 +33,75 @@ function DiagramHistory() {
   const systolic = latestDiagnosis.blood_pressure?.systolic || {};
   const diastolic = latestDiagnosis.blood_pressure?.diastolic || {};
 
-  if (isLoading) {
-    return <DiagramHistorySkeleton />;
-  }
+  const defaultChartData = useMemo(
+    () => ({
+      labels: [
+        "Oct, 2023",
+        "Nov, 2023",
+        "Dec, 2023",
+        "Jan, 2024",
+        "Feb, 2024",
+        "Mar, 2024",
+      ],
+      datasets: [
+        {
+          label: "Systolic",
+          data: [120, 118, 160, 105, 145, 159],
+          borderColor: "#C26EB4",
+          tension: 0.4,
+        },
+        {
+          label: "Diastolic",
+          data: [110, 61, 110, 95, 70, 79],
+          borderColor: "#7E6CAB",
+          tension: 0.4,
+        },
+      ],
+    }),
+    []
+  );
+
+  const chartData = useMemo(
+    () => ({
+      labels: chartLabel,
+      datasets: [
+        {
+          label: "Systolic",
+          data: [...systolicData],
+          borderColor: "#C26EB4",
+          tension: 0.4,
+        },
+        {
+          label: "Diastolic",
+          data: [...diastolicData],
+          borderColor: "#7E6CAB",
+          tension: 0.4,
+        },
+      ],
+    }),
+    [
+      JSON.stringify(chartLabel),
+      JSON.stringify(systolicData),
+      JSON.stringify(diastolicData),
+    ]
+  );
+
+  const chartOptions = useMemo(
+    () => ({
+      responsive: true,
+      animation: false,
+      transitions: {
+        active: { animation: { duration: 0 } },
+        resize: { animation: { duration: 0 } },
+      },
+      plugins: {
+        legend: {
+          position: "top",
+        },
+      },
+    }),
+    []
+  );
 
   if (!selectPatient) {
     return (
@@ -50,44 +116,7 @@ function DiagramHistory() {
             </select>
           </div>
           <div className="board-chart">
-            <Line
-              data={{
-                labels: [
-                  "Oct, 2023",
-                  "Nov, 2023",
-                  "Dec, 2023",
-                  "Jan, 2024",
-                  "Feb, 2024",
-                  "Mar, 2024",
-                ],
-                datasets: [
-                  {
-                    label: "Systolic",
-                    data: [60, 100, 80, 120, 180, 110],
-                    borderColor: "#C26EB4",
-                    tension: 0.4,
-                  },
-                  {
-                    label: "Diastolic",
-                    data: [70, 90, 140, 160, 155, 130],
-                    borderColor: "#7E6CAB",
-                    tension: 0.4,
-                  },
-                ],
-              }}
-              options={{
-                responsive: true,
-                animation: {
-                  duration: 400,
-                  easing: "easeOutQuad",
-                },
-                plugins: {
-                  legend: {
-                    position: "top",
-                  },
-                },
-              }}
-            />
+            <Line data={defaultChartData} options={chartOptions} />
             <div className="health-record">
               <div className="health-summary">
                 <div className="summary systolic">
@@ -145,33 +174,7 @@ function DiagramHistory() {
           </select>
         </div>
         <div className="board-chart">
-          <Line
-            data={{
-              labels: chartLabel,
-              datasets: [
-                {
-                  label: "Systolic",
-                  data: systolicData,
-                  borderColor: "#C26EB4",
-                  tension: 0.4,
-                },
-                {
-                  label: "Diastolic",
-                  data: diastolicData,
-                  borderColor: "#7E6CAB",
-                  tension: 0.4,
-                },
-              ],
-            }}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: "top",
-                },
-              },
-            }}
-          />
+          <Line data={chartData} options={chartOptions} />
           <div className="health-record">
             <div className="health-summary">
               <div className="summary systolic">
