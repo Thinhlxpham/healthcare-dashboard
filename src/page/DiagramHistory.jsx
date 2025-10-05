@@ -67,29 +67,30 @@ function DiagramHistory() {
       datasets: [
         {
           label: "Systolic",
-          data: [...systolicData],
+          data: systolicData,
           borderColor: "#C26EB4",
           tension: 0.4,
         },
         {
           label: "Diastolic",
-          data: [...diastolicData],
+          data: diastolicData,
           borderColor: "#7E6CAB",
           tension: 0.4,
         },
       ],
     }),
-    [
-      JSON.stringify(chartLabel),
-      JSON.stringify(systolicData),
-      JSON.stringify(diastolicData),
-    ]
+    [chartLabel, systolicData, diastolicData]
   );
 
   const chartOptions = useMemo(
     () => ({
       responsive: true,
-      animation: false,
+      maintainAspectRatio: false,
+
+      animation: {
+        duration: 800,
+        easing: "easeOutQuad",
+      },
       transitions: {
         active: { animation: { duration: 0 } },
         resize: { animation: { duration: 0 } },
