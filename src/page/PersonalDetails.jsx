@@ -17,8 +17,6 @@ function PersonalDetails() {
         <div className="image-profile">
           <img src={Layer2} className="main-image-profile" />
           <h2 className="profile-name">Jessica Taylor</h2>
-
-          <p className="profile-age">Age: 28</p>
         </div>
         <div className="profile-details">
           <div className="dob-detail">
@@ -80,9 +78,6 @@ function PersonalDetails() {
           className="main-image-profile"
         />
         <h2 className="profile-name">{selectPatient.name || "Loading..."}</h2>
-        {selectPatient.age && (
-          <p className="profile-age">Age: {selectPatient.age}</p>
-        )}
       </div>
       <div className="profile-details">
         <div className="dob-detail">

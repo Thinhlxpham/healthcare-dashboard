@@ -30,6 +30,12 @@ body {
   justify-content: space-between;
   width: 100%;
 }
+.logo {
+  top: 30px;
+  left: 50px;
+  width: 211px;
+  height: 48px;
+}
 .nav-logo {
   display: flex;
   align-items: center;
@@ -38,15 +44,54 @@ body {
 .nav-middle {
   display: flex;
   align-items: center;
-  width: 663px;
+
   gap: 10px;
   justify-content: space-between;
+  top: 23px;
+  left: 473px;
+  width: 663px;
+  height: 63px;
+}
+.overview {
+  top: 45px;
+  left: 498px;
+  width: 70px;
+  height: 19px;
+}
+.paitents {
+  top: 45px;
+  left: 649px;
+  width: 57px;
+  height: 19px;
+}
+.schedule {
+  top: 45px;
+  left: 785px;
+  width: 70px;
+  height: 19px;
+}
+.message {
+  top: 45px;
+  left: 916px;
+  width: 70px;
+  height: 19px;
+}
+.transaction {
+  top: 45px;
+  left: 1047px;
+  width: 110px;
+  height: 19px;
 }
 
 .nav-right {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   flex-direction: row;
+  align-items: center;
+  top: 32px;
+  left: 1309px;
+  width: 300px;
+  height: 64px;
 }
 .doctor-account {
   display: flex;
@@ -61,25 +106,39 @@ div > .vertical-bar {
   color: #072635;
   text-align: left;
   font-weight: 700;
+  top: 35px;
+  left: 1361px;
+  width: 150px;
+  height: 19px;
 }
 .occupation {
   color: #707070;
   font-size: 15px;
+  top: 54px;
+  left: 1361px;
+  width: 150px;
+  height: 19px;
 }
 .menu-icon {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.overview-btn {
+.overview-btn,
+.paitents-btn,
+.schedule-btn,
+.message-btn,
+.credit-card-btn {
+  top: 45px;
+  left: 400px;
   display: flex;
   align-items: center;
   gap: 10px;
+
+  width: 110px;
+  height: 20px;
 }
-.overview {
-  font-weight: 500;
-  letter-spacing: 0px;
-}
+
 .paitents-btn {
   display: flex;
   align-items: center;
@@ -90,37 +149,7 @@ div > .vertical-bar {
   height: 41px;
   justify-content: center;
 }
-.paitents {
-  font-weight: 500;
-  letter-spacing: 0px;
-}
-.schedule-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.schedule {
-  font-weight: 500;
-  letter-spacing: 0px;
-}
-.message-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.message {
-  font-weight: 500;
-  letter-spacing: 0px;
-}
-.credit-card-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.transaction {
-  font-weight: 500;
-  letter-spacing: 0px;
-}
+
 /* This is where I style body page like chart patients name information, ect */
 .body-page {
   display: grid;
@@ -185,7 +214,9 @@ div > .vertical-bar {
   background-color: #fff;
 }
 .main-headers {
-  width: 100%;
+  top: 122px;
+  left: 18px;
+  max-width: 100%;
   height: 1054px;
   display: flex;
   flex-direction: column;
@@ -193,16 +224,8 @@ div > .vertical-bar {
   border-radius: 16px;
   opacity: 1;
   padding: 20px 20px;
-  overflow-y: auto;
+  overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: #072635 #f1f1f1;
-}
-.main-headers::-webkit-scrollbar {
-  width: 2px;
-}
-.patient-lists::-webkit-scrollbar {
-  width: 20px;
-  height: 20px;
 }
 
 .patients-title {
@@ -212,6 +235,10 @@ div > .vertical-bar {
 .horizontal-threedot-icon {
   margin-left: auto;
   cursor: pointer;
+}
+/* scrollbar style */
+.patient-lists::-webkit-scrollbar {
+  width: 10px;
 }
 
 /* Style chart diagram */
@@ -228,8 +255,10 @@ div > .vertical-bar {
   top: 215px;
   left: 437px;
   width: 726px;
-  height: 300px;
+  height: 298px;
+  margin: 0 auto;
   max-width: 100%;
+  padding: 10px 10px;
   background: #f4f0fe 0% 0% no-repeat padding-box;
   border-radius: 12px;
   opacity: 1;
@@ -331,7 +360,7 @@ select {
 /* This is below chart diagram */
 .inside-body-part {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 15px;
 }
 
@@ -340,27 +369,27 @@ select {
   top: 533px;
   left: 437px;
   width: 228px;
-  height: 200px;
+  height: 242px;
   border-radius: 12px;
-  padding: 10px 10px;
+  padding: 20px 20px;
 }
 .temperature {
   background-color: #ffe6e9;
   top: 533px;
-  left: 437px;
+  left: 686px;
   width: 228px;
-  height: 200px;
+  height: 242px;
   border-radius: 12px;
-  padding: 10px 10px;
+  padding: 20px 20px;
 }
 .heart {
   background-color: #ffe6f1;
   top: 533px;
-  left: 437px;
+  left: 935px;
   width: 228px;
-  height: 200px;
+  height: 242px;
   border-radius: 12px;
-  padding: 10px 10px;
+  padding: 20px 20px;
 }
 .low-and-high {
   font-size: 15px;
@@ -465,11 +494,17 @@ select {
   gap: 20px;
 }
 .main-image-profile {
-  width: 100px;
-  height: 100px;
+  top: 140px;
+  left: 1299px;
+  width: 200px;
+  height: 200px;
 }
 .profile-name {
   text-align: center;
+  top: 364px;
+  left: 1317px;
+
+  height: 33px;
 }
 
 .card h3 {
@@ -479,14 +514,6 @@ select {
   color: #222;
 }
 
-.patients-name::-webkit-scrollbar {
-  width: 6px;
-  height: 100%;
-}
-.patients-name::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 8px;
-}
 /* This is where I style Diagnostic List */
 table {
   width: 100%;
