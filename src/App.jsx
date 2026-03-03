@@ -1,15 +1,10 @@
-import "./App.css";
-import Dashboard from "./page/Dashboard";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import Home from "./Home";
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-        </Routes>
-      </Router>
+      <Home />
     </>
   );
 }
