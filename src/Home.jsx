@@ -13,6 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const [selectedPatient, setSelectedPatient] = useState(null);
+
   async function fetchPatientData() {
     try {
       const response = await axios.get(
@@ -28,7 +29,7 @@ export default function Home() {
       setPatientList(data);
 
       if (data && data.length > 0) {
-        setSelectedPatient(data[0]);
+        setSelectedPatient(data[3]);
       }
       setLoading(true);
     } catch (error) {
