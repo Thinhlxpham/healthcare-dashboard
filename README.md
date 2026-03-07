@@ -1,16 +1,19 @@
-# React + Vite
+HEALTHCARE DASHBOARD APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Preview
+<img width="771" height="579" alt="Screenshot 2026-03-07 084857" src="https://github.com/user-attachments/assets/c092efa2-1e17-41d3-8317-acf9e3c3ee50" />
 
-Currently, two official plugins are available:
+So in this project is healthcare dashboard where I collect each patient in API to render out the result and also I include chart.js to analyst each patient blood pressure heart rate temperature and respiration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+So here is the API URL: https://fedskillstest.coalitiontechnologies.workers.dev/ 
+So this API is Authentication if you want to render out here is the username and password
 
-## React Compiler
+username: "coalition",
+password: "skills-test",
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+It's look like this.
+<img width="1919" height="1022" alt="Screenshot 2026-03-07 085225" src="https://github.com/user-attachments/assets/aea8477d-6f5e-4f82-935a-1a0b1316475e" />
 
-## Expanding the ESLint configuration
+And here is the URL ChartJS you can take a look:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+https://www.chartjs.org/
