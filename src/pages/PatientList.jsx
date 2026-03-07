@@ -24,9 +24,7 @@ export default function PatientList() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-          ) : (
-            false
-          )}
+          ) : null}
           <FontAwesomeIcon
             icon={faSearch}
             className="search"
